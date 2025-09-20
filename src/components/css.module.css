@@ -1,0 +1,9 @@
+calendar {
+    color: #20b2aa;
+    width: 80%;
+    height: 80%;
+}
+
+.slider:hover {
+    color: #2e8b57;
+}

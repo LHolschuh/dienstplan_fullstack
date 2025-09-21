@@ -1,13 +1,39 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import AccessAlarmSharpIcon from '@mui/icons-material/AccessAlarmSharp';
 import HotelSharpIcon from '@mui/icons-material/HotelSharp';
 import HomeWorkSharpIcon from '@mui/icons-material/HomeWorkSharp';
 import WbTwilightSharpIcon from '@mui/icons-material/WbTwilightSharp';
-import AddIcon from '@mui/icons-material/Add';
+import CustomizedButton from "./customizedButton.tsx";
+import NeueVorlagenModal from "./neueVorlagenModal.tsx";
+import {useState} from "react";
+import {color} from "@mui/system";
 
-export default function IconLabelButtons() {
+type IconLabelButtonsProps = {
+    onClick: () => void
+};
+type ButtonData = {
+    title: string;
+    color?: "primary" | "secondary" | "success" | "error";
+    icon?: React.ReactNode;
+    isDienst?: boolean;
+};
+
+
+export default function IconLabelButtons({onClick}: IconLabelButtonsProps) {
+ //   const [buttons, setButtons] = useState<ButtonData[]>([
+ //       {title: "FD K", icon: <AccessAlarmIcon/>, color: "primary", isDienst: true},
+ //   ]);
+
+ //   const handleAddButton = () => {
+ //       const newButton: ButtonData = {
+ //           title: `Neu ${buttons.length + 1}`,
+ //           icon: <AccessAlarmIcon/>,
+ //           color: "secondary",
+ //           isDienst: true,
+ //       };
+ //       setButtons((prev) => [...prev, newButton]);
+ //   };
+
     return (
         <>
             <Stack
@@ -26,33 +52,41 @@ export default function IconLabelButtons() {
                 >
 
 
-                    <Button variant="contained" startIcon={<AccessAlarmSharpIcon/>}>
-                        FD K
-                    </Button>
-                    <Button variant="contained" startIcon={<HotelSharpIcon/>}>
-                        ND K
-                    </Button>
-                    <Button variant="contained" startIcon={<WbTwilightSharpIcon/>}>
-                        SD K
-                    </Button>
-                    <Button variant="contained" startIcon={<HomeWorkSharpIcon/>}>
-                        BD K
-                    </Button>
-                    <Button variant="contained" color="secondary" startIcon={<AccessAlarmSharpIcon/>}>
-                        FD AK
-                    </Button>
-                    <Button variant="contained" color="secondary" startIcon={<HotelSharpIcon/>}>
-                        ND AK
-                    </Button>
-                    <Button variant="contained" color="secondary" startIcon={<WbTwilightSharpIcon/>}>
-                        SD AK
-                    </Button>
-                    <Button variant="contained" color="secondary" startIcon={<HomeWorkSharpIcon/>}>
-                        BD AK
-                    </Button>
-                    <Button variant="outlined" href="#outlined-buttons" startIcon={<AddIcon/>}>
-                        Hinzufügen
-                    </Button>
+
+                    <CustomizedButton title="FD K" icon={<AccessAlarmSharpIcon/>} color={"primary"}
+                                      onClick={function (): void {
+                                          throw new Error("Function not implemented.");
+                                      }} isDienst={true}/>
+                    <CustomizedButton title="ND K" icon={<HotelSharpIcon/>} color={"primary"}
+                                      onClick={function (): void {
+                                          throw new Error("Function not implemented.");
+                                      }} isDienst={true}/>
+                    <CustomizedButton title="SD K" icon={<WbTwilightSharpIcon/>} color={"primary"}
+                                      onClick={function (): void {
+                                          throw new Error("Function not implemented.");
+                                      }} isDienst={true}/>
+                    <CustomizedButton title="BD K" icon={<HomeWorkSharpIcon/>} color={"primary"}
+                                      onClick={function (): void {
+                                          throw new Error("Function not implemented.");
+                                      }} isDienst={true}/>
+
+                    <CustomizedButton title="FD AK" icon={<AccessAlarmSharpIcon/>} color="secondary"
+                                      onClick={function (): void {
+                                          throw new Error("Function not implemented.");
+                                      }} isDienst={true}/>
+                    <CustomizedButton title="ND AK" icon={<HotelSharpIcon/>} color="secondary"
+                                      onClick={function (): void {
+                                          throw new Error("Function not implemented.");
+                                      }} isDienst={true}/>
+                    <CustomizedButton title="SD AK" icon={<WbTwilightSharpIcon/>} color="secondary"
+                                      onClick={function (): void {
+                                          throw new Error("Function not implemented.");
+                                      }} isDienst={true}/>
+                    <CustomizedButton title="BD AK" icon={<HomeWorkSharpIcon/>} color="secondary"
+                                      isDienst={true} onClick={function (): void {
+                        throw new Error("Function not implemented.");
+                    }}/>
+                    <NeueVorlagenModal handleClick={()=>{}}/>
                 </Stack>
 
             </Stack>

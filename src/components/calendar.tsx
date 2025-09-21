@@ -5,13 +5,22 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { PickersDay, type PickersDayProps } from '@mui/x-date-pickers/PickersDay';
 import Stack from '@mui/material/Stack';
-import Button from "@mui/material/Button";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import CustomizedButton from "./customizedButton.tsx";
 
-export default function MultiSelectCalendar() {
+interface MultiSelectCalendarProps {
+    onClick: () => void,
+    customizedButtonOnClick: () => void
+}
+
+
+
+export default function MultiSelectCalendar({ onClick, customizedButtonOnClick }: MultiSelectCalendarProps) {
     const [selectedDates, setSelectedDates] = React.useState<Dayjs[]>([]);
-
+    function onClickDelete() {
+        setSelectedDates([]);
+    }
     const handleDayClick = (date: Dayjs) => {
         const exists = selectedDates.some((d) => d.isSame(date, 'day'));
         if (exists) {
@@ -39,15 +48,11 @@ export default function MultiSelectCalendar() {
                 padding: '1rem',
             }}
         >
-            <Button variant="outlined" href="#outlined-buttons" startIcon={<DeleteOutlineIcon/>}>
-                Kalender zurücksetzen
-            </Button>
+            <CustomizedButton isDienst={false} title="Kalender zurücksetzen" color="primary" icon={<DeleteOutlineIcon/>} onClick={onClickDelete}/>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateCalendar slots={{ day: CustomDay }} />
             </LocalizationProvider>
-            <Button variant="outlined" href="#outlined-buttons" startIcon={<CalendarMonthIcon/>}>
-                Zum Google-Kalender hinzufügen
-            </Button>
+            <CustomizedButton isDienst={false} title="Zum Google-Kalender hinzufügen" color="primary" icon={<CalendarMonthIcon/>} onClick={customizedButtonOnClick}/>
         </Stack>
     );
 }
